@@ -1,0 +1,60 @@
+Sensor Type: Co2_sensor
+Co2: 161.45
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 7
+PM2.5: 10
+PM10: 11
+error: False
+--------------------
+Sensor Type: Co2_sensor
+Co2: 161.45
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 7
+PM2.5: 11
+PM10: 11
+error: False
+--------------------
+Sensor Type: Co2_sensor
+Co2: 161.43
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 6
+PM2.5: 7
+PM10: 7
+error: False
+--------------------
+Sensor Type: Co2_sensor
+Co2: 161.84
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 8
+PM2.5: 9
+PM10: 9
+error: False
+--------------------
+Sensor Type: Co2_sensor
+Co2: 161.84
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 8
+PM2.5: 9
+PM10: 9
+error: True
+--------------------
+Sensor Type: Co2_sensor
+Co2: 161.87
+error: False
+--------------------
+Sensor Type: Pm_sensor
+PM1.0: 6
+PM2.5: 9
+PM10: 10
+error: False
+--------------------
