@@ -1,12 +1,13 @@
 from co2_sensor import Co2_sensor
 from pm_sensor import Pm_sensor
+from  dht_sensor import Dht_sensor
 import time
 
 # Define the file name to save data
 file_name = "sensor_data.txt"
 
 # Create a list of sensors
-sensors = [Co2_sensor(), Pm_sensor()]
+sensors = [Co2_sensor(), Pm_sensor(), Dht_sensor()]
 
 # Define the duration of the data collection process (in seconds)
 duration_hours = 1
