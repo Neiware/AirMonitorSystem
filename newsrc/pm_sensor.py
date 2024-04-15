@@ -53,7 +53,6 @@ class Pm_sensor(Abc_sensor):
 
 		self._read_data()
 
-		print("reading")
 
 	def _read_data(self):
 		try:
@@ -79,8 +78,6 @@ class Pm_sensor(Abc_sensor):
 				#validate uncurropted data with checksum
 				checksum = self.data_frame[31]
 				current_checksum = self._calculate_new_checksum()
-				print(checksum)
-				print(current_checksum)
 				if checksum == current_checksum:
 					self._set_error(False)
 					break
@@ -100,7 +97,6 @@ class Pm_sensor(Abc_sensor):
 		for i in range(13):
 			processed_data[i] = self._sum_2Bytes_to_16bits(self.data_frame[index_data], self.data_frame[index_data + 1])
 			index_data += 2
-		print(processed_data[1])
 		self._set_PM1_0(processed_data[0])
 		self._set_PM2_5(processed_data[1])
 		self._set_PM10(processed_data[2])
@@ -111,7 +107,8 @@ class Pm_sensor(Abc_sensor):
 	def __init__(self):
 		try:
 			test_serial = serial.Serial(self.PORT, self.BAUDRATE, timeout= self.TIMEOUT)
-			print(test_serial.is_open)
+			if test_serial.is_open:
+				print("PM5003 Initializing..")
 			self.alive = True
 			test_serial.close()
 

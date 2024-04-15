@@ -72,7 +72,7 @@ class Co2_sensor(Abc_sensor):
 
 			cycle_time = high_time + low_time
 			attepmts_reading = attepmts_reading + 1
-			print(cycle_time)
+			#print(cycle_time)
 
 			if cycle_time > self.MAX_CYCLE_TIME or cycle_time < self.MIN_CYCLE_TIME:
 				self.data['error'] = True
@@ -87,9 +87,11 @@ class Co2_sensor(Abc_sensor):
 			self.pwm_pin = 12
 			GPIO.setmode(GPIO.BCM)
 			GPIO.setup(self.pwm_pin, GPIO.IN)
+			print("Co2 sensor Initializing...")
 			self._set_alive(True)
 
 		except:
+			print("Co2 sensor: Error Initializing")
 			#log for GPIO error
 			print("Fatal Error")
 			self._set_alive(False)
