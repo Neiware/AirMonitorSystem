@@ -1,11 +1,10 @@
-
 import sqlite3
 
 class SensorDatabase:
 	def __init__(self, db_name='sensor_data.db'):
 		self.db_name = db_name
-		self.conn = sqlite3.connect(db_name)
-		self.create_tables()
+		self.conn = None
+		#self.create_tables()
 		print("Database initializing...")
 
 	def create_tables(self):
@@ -37,6 +36,9 @@ class SensorDatabase:
 
 		self.conn.commit()
 
+	def connect(self):
+		self.conn = sqlite3.connect(self.db_name)
+
 	def insert_co2_data(self, co2_data):
 		cursor = self.conn.cursor()
 		cursor.execute("""INSERT INTO co2_data (co2_data) VALUES (?);""", (co2_data,))
@@ -58,3 +60,8 @@ class SensorDatabase:
 	def close_connection(self):
 		self.conn.close()
 
+	def get_co2(self):
+		cursor = self.conn.cursor()
+		response = cursor.execute('''SELECT * FROM co2_data''')
+		print(type(response.fetchall()))
+		self.conn.commit()
