@@ -41,13 +41,13 @@ class Co2_sensor(Abc_sensor):
 	def timeMs(self):
 		return time.perf_counter_ns()/1000000
 
-	def co2_ppm(self,time_high, time_low):
+	def _calculate_co2_ppm(self,time_high, time_low):
 		return 2000*((time_high - 2)/(time_high + time_low - 4))
 
 	#define which time state to obtain
 	# state = False (Low state)
 	# state = True (High state)
-	def _state_time(self, state):
+	def _get_timeMs_state(self, state):
 		start_time = self.timeMs()
 		pwm_value = state
 		threshold_Ms = 1000
@@ -67,8 +67,8 @@ class Co2_sensor(Abc_sensor):
 		attepmts_reading = 0
 		while attepmts_reading < 5:
 
-			high_time = self._state_time(True)
-			low_time =  self._state_time(False)
+			high_time = self._get_timeMs_state(True)
+			low_time =  self._get_timeMs_state(False)
 
 			cycle_time = high_time + low_time
 			attepmts_reading = attepmts_reading + 1
@@ -78,7 +78,7 @@ class Co2_sensor(Abc_sensor):
 				self.data['error'] = True
 				continue
 			else:
-				co2_data = self.co2_ppm(high_time, low_time)
+				co2_data = self._calculate_co2_ppm(high_time, low_time)
 				self._set_data_co2(co2_data)
 				break
 
